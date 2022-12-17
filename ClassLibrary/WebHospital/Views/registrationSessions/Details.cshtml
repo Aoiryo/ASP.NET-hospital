@@ -1,0 +1,74 @@
+﻿@model ClassLibrary.registrationSession
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>registrationSession</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.registrationPersonnelID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.registrationPersonnelID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.patientID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.patientID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.registrationType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.registrationType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.registrationObject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.registrationObject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sessionTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sessionTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.department)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.department)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.registrationSessionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

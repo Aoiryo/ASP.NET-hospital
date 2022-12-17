@@ -1,0 +1,80 @@
+﻿@model ClassLibrary.registrationSession
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>registrationSession</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.registrationPersonnelID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.registrationPersonnelID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.patientID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.patientID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.registrationType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.registrationType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.registrationObject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.registrationObject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sessionTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sessionTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.department)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.department)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

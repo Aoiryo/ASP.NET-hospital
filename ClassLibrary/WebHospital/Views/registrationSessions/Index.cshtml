@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ClassLibrary.registrationSession>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.registrationPersonnelID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.patientID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.registrationType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.registrationObject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sessionTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.department)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.registrationPersonnelID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.patientID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.registrationType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.registrationObject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sessionTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.department)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.registrationSessionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.registrationSessionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.registrationSessionID })
+        </td>
+    </tr>
+}
+
+</table>
