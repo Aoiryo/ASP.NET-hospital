@@ -23,5 +23,8 @@ namespace ClassLibrary
 
         [StringLength(50)]
         public string schedulingStatus { get; set; }
+
+        [StringLength(2)]
+        public string timeDetail { get; set; }
     }
 }

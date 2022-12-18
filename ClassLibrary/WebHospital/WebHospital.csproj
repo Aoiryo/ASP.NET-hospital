@@ -211,6 +211,8 @@
     <Content Include="Views\registrationSessions\Edit.cshtml" />
     <Content Include="Views\registrationSessions\Index.cshtml" />
     <Content Include="Views\register\pay.cshtml" />
+    <Content Include="Views\register\search.cshtml" />
+    <Content Include="Views\register\register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

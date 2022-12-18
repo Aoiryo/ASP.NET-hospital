@@ -146,7 +146,24 @@ namespace WebHospital.Controllers
             else return View();
         }
 
-        public ActionResult register(long? helperID, long patientID, long medicalPersonnelId, DateTime time, string department)
+        public ActionResult search(string department, DateTime time, string timeDetail) // return available appointment positions
+        {
+            List<medicalPersonnel> people = db.medicalPersonnel.Where(p => p.department == department).ToList();
+            List<scheduling> availablePeople = db.scheduling.Where(p => p.dutyTime == time && p.timeDetail == timeDetail).ToList();
+
+            return View(availablePeople); // return a list of available # aligned with different departments
+        }
+
+        // leave a button on the right to display avialable positions for the doctor
+        public int displayAvailableNumber(scheduling toSearch)
+        {
+            long personnelID = toSearch.medicalPersonnelID;
+            int appointing = db.registrationSession.Where(p => p.time == toSearch.dutyTime && p.timeDetail == toSearch.timeDetail && p.medicalPersonnelId == personnelID).ToList().Count;
+            int availableNumber = 30 - appointing;
+            return availableNumber;
+        }
+
+        public ActionResult register(long? helperID, long patientID, long medicalPersonnelId, DateTime time, string department, string timeDetail)
         {
             if (Session["Current"] == null)
             {
@@ -159,6 +176,7 @@ namespace WebHospital.Controllers
                 patientID = patientID,
                 medicalPersonnelId = medicalPersonnelId,
                 time = time,
+                timeDetail = timeDetail,
                 sessionTime = DateTime.Now,
                 department = department
             };
@@ -185,7 +203,7 @@ namespace WebHospital.Controllers
 
         public ActionResult pay(registrationSession s) // difficult to implement without using API - not implemented yet
         {
-            return View();
+            return View(s);
         }
 
         public ActionResult edit()

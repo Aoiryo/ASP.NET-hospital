@@ -28,5 +28,9 @@ namespace ClassLibrary
         [Required]
         [StringLength(50)]
         public string department { get; set; }
+
+        [Required]
+        [StringLength(2)]
+        public string timeDetail { get; set; }
     }
 }
