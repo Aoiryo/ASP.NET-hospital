@@ -145,8 +145,45 @@ namespace WebHospital.Controllers
             }
             else return View();
         }
-        
-        public ActionResult register()
+
+        public ActionResult register(long? helperID, long patientID, long medicalPersonnelId, DateTime time, string department)
+        {
+            if (Session["Current"] == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest); // not permitted to register without logging in
+            }
+            registrationSession s = new registrationSession()
+            {
+                isStart = true,
+                registrationSessionID = (long)HttpContext.Application["registration"],
+                patientID = patientID,
+                medicalPersonnelId = medicalPersonnelId,
+                time = time,
+                sessionTime = DateTime.Now,
+                department = department
+            };
+
+            HttpContext.Application["registration"] = (long)HttpContext.Application["registration"] + 1; // in case that the patient gets a second registration
+
+            if (helperID != null) s.registrationPersonnelID = (long)helperID;
+            db.registrationSession.Add(s);
+            db.SaveChanges();
+
+            order o = new order()
+            {
+                orderNumber = (long)HttpContext.Application["order"],
+                registrationSessionID = s.registrationSessionID, 
+                medicalPersonnelID = s.medicalPersonnelId,
+                orderTime = DateTime.Now,
+                orderType = "registration",
+                orderStatus = "not paid", 
+                payment = 5
+            };
+            // return View();
+            return RedirectToAction("pay", o);
+        }
+
+        public ActionResult pay(registrationSession s) // difficult to implement without using API - not implemented yet
         {
             return View();
         }

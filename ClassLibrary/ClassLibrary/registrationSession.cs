@@ -16,7 +16,6 @@ namespace ClassLibrary
 
         public long patientID { get; set; }
 
-        [Required]
         public long medicalPersonnelId { get; set; }
 
         [Required]

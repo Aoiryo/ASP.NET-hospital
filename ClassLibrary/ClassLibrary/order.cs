@@ -19,7 +19,6 @@ namespace ClassLibrary
 
         public DateTime orderTime { get; set; }
 
-        [Required]
         public string orderDetail { get; set; }
 
         [Column(TypeName = "money")]
