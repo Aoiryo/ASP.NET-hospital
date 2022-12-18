@@ -42,5 +42,8 @@ namespace ClassLibrary
 
         [Column(TypeName = "date")]
         public DateTime? birthday { get; set; }
+
+        [StringLength(50)]
+        public string department { get; set; }
     }
 }

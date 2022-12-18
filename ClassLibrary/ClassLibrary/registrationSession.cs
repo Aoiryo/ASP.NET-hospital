@@ -17,12 +17,10 @@ namespace ClassLibrary
         public long patientID { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string registrationType { get; set; }
+        public long medicalPersonnelId { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string registrationObject { get; set; }
+        public DateTime time { get; set; }
 
         public DateTime sessionTime { get; set; }
 
