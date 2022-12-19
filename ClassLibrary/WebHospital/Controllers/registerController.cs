@@ -146,6 +146,11 @@ namespace WebHospital.Controllers
             else return View();
         }
 
+        public ActionResult search()
+        {
+            return View(db.scheduling.ToList());
+        }
+
         public ActionResult search(string department, DateTime time, string timeDetail) // return available appointment positions
         {
             List<medicalPersonnel> people = db.medicalPersonnel.Where(p => p.department == department).ToList();
@@ -197,13 +202,18 @@ namespace WebHospital.Controllers
                 orderStatus = "not paid", 
                 payment = 5
             };
+
+            HttpContext.Application["order"] = (long)HttpContext.Application["order"] + 1;
+            db.order.Add(o);
+            db.SaveChanges();
             // return View();
             return RedirectToAction("pay", o);
         }
 
-        public ActionResult pay(registrationSession s) // difficult to implement without using API - not implemented yet
+        public ActionResult pay(order o) // difficult to implement without using API - not implemented yet
         {
-            return View(s);
+            o.orderStatus = "paid";
+            return View(o);
         }
 
         public ActionResult edit()

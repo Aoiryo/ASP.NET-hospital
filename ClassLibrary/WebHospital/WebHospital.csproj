@@ -127,10 +127,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\caseController.cs" />
+    <Compile Include="Controllers\doctorController.cs" />
+    <Compile Include="Controllers\examinationEquipmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\injectingEquipmentController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\medicineController.cs" />
     <Compile Include="Controllers\patientsController.cs" />
     <Compile Include="Controllers\registerController.cs" />
+    <Compile Include="Controllers\superadminController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -213,6 +218,16 @@
     <Content Include="Views\register\pay.cshtml" />
     <Content Include="Views\register\search.cshtml" />
     <Content Include="Views\register\register.cshtml" />
+    <Content Include="Views\doctor\Create.cshtml" />
+    <Content Include="Views\doctor\Delete.cshtml" />
+    <Content Include="Views\doctor\Details.cshtml" />
+    <Content Include="Views\doctor\Edit.cshtml" />
+    <Content Include="Views\doctor\Index.cshtml" />
+    <Content Include="Views\superadmin\Create.cshtml" />
+    <Content Include="Views\superadmin\Delete.cshtml" />
+    <Content Include="Views\superadmin\Details.cshtml" />
+    <Content Include="Views\superadmin\Edit.cshtml" />
+    <Content Include="Views\superadmin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

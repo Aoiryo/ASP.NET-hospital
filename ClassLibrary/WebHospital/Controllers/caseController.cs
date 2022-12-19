@@ -59,13 +59,13 @@ namespace WebHospital.Controllers
         }
 
         // GET: case/Edit/5
-        public ActionResult Edit(long? id)
+        public ActionResult Edit(long? id, DateTime time)
         {
-            if (id == null)
+            if (id == null || time == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            medicalHistory medicalHistory = db.medicalHistory.Find(id);
+            medicalHistory medicalHistory = db.medicalHistory.Find(id, time);
             if (medicalHistory == null)
             {
                 return HttpNotFound();
@@ -124,11 +124,15 @@ namespace WebHospital.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult addNew(long patientId, DateTime diagnosisTime, string department, 
-                                    long medicalPersonnelId, string diagnosisResult)
+        public ActionResult addCase(long patientId, DateTime diagnosisTime, string department, 
+                                    long medicalPersonnelId, string diagnosisResult, int price)
             // There should be a method searching for the patient ID for a certain patient with his/her ID number,
             // or, it will be impractical for the doctor to know that ahead. 
         {
+            if (((user)Session["Current"]).roleID != 2) // not a doctor, no permission to add cases
+            {
+                return View("NoPermission");
+            }
             medicalHistory his = new medicalHistory()
             {
                 patientID = patientId,
@@ -142,7 +146,17 @@ namespace WebHospital.Controllers
                 db.medicalHistory.Add(his);
                 db.SaveChanges();
             }
-            return View();
+
+            order o = new order()
+            {
+                orderNumber = (long)HttpContext.Application["order"],
+                medicalPersonnelID = Convert.ToInt64(((user)Session["Current"]).IDNumber), // medical personnel all log in through working number - a easy fetch
+                orderTime = DateTime.Now,
+                orderType = "prescription",
+                orderStatus = "not paid",
+            };
+            o.payment = price;
+            return View(o);
         }
 
         public ActionResult showCase(long patientId) // the same problem as above
@@ -158,5 +172,7 @@ namespace WebHospital.Controllers
             db.SaveChanges();
             return View();
         }
+
+
     }
 }

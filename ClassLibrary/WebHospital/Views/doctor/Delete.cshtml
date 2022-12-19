@@ -1,0 +1,120 @@
+﻿@model ClassLibrary.medicalPersonnel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>medicalPersonnel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isExpert)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isExpert)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.introduction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.introduction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.job)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.job)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isDimission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isDimission)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contactInformation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contactInformation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.birthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.birthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.department)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.department)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

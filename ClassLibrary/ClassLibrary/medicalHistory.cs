@@ -11,7 +11,6 @@ namespace ClassLibrary
     {
         [Key]
         [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long patientID { get; set; }
 
         [Key]

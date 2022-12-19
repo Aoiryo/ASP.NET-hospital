@@ -31,5 +31,7 @@ namespace ClassLibrary
         [Required]
         [StringLength(50)]
         public string orderStatus { get; set; }
+
+        public long patientId { get; set; }
     }
 }

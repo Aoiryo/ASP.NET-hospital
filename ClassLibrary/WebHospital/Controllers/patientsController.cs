@@ -17,9 +17,11 @@ namespace WebHospital.Controllers
         private Model1 db = new Model1();
 
         // GET: patients
-        public ActionResult Index()
+        public ActionResult Index(patient patient)
         {
-            return View(db.patient.ToList());
+            List<patient> temp = new List<patient>();
+            temp.Add(patient);
+            return View(temp);
         }
 
         // GET: patients/Details/5
