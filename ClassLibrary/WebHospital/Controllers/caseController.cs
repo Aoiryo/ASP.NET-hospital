@@ -153,9 +153,11 @@ namespace WebHospital.Controllers
                 medicalPersonnelID = Convert.ToInt64(((user)Session["Current"]).IDNumber), // medical personnel all log in through working number - a easy fetch
                 orderTime = DateTime.Now,
                 orderType = "prescription",
-                orderStatus = "not paid",
+                orderStatus = "not paid"
             };
             o.payment = price;
+            db.order.Add(o);
+            db.SaveChanges();
             return View(o);
         }
 

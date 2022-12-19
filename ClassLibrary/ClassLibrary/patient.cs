@@ -20,7 +20,7 @@ namespace ClassLibrary
         [StringLength(50)]
         public string name { get; set; }
 
-        public bool gender { get; set; }
+        public string gender { get; set; }
 
         public int? age { get; set; }
 
