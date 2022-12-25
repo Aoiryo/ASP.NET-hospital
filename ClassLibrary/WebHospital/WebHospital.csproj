@@ -210,11 +210,6 @@
     <Content Include="Views\medicalHistories\Details.cshtml" />
     <Content Include="Views\medicalHistories\Edit.cshtml" />
     <Content Include="Views\medicalHistories\Index.cshtml" />
-    <Content Include="Views\registrationSessions\Create.cshtml" />
-    <Content Include="Views\registrationSessions\Delete.cshtml" />
-    <Content Include="Views\registrationSessions\Details.cshtml" />
-    <Content Include="Views\registrationSessions\Edit.cshtml" />
-    <Content Include="Views\registrationSessions\Index.cshtml" />
     <Content Include="Views\register\pay.cshtml" />
     <Content Include="Views\register\search.cshtml" />
     <Content Include="Views\register\register.cshtml" />
@@ -228,6 +223,7 @@
     <Content Include="Views\superadmin\Details.cshtml" />
     <Content Include="Views\superadmin\Edit.cshtml" />
     <Content Include="Views\superadmin\Index.cshtml" />
+    <Content Include="Views\register\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

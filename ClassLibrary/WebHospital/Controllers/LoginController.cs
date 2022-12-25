@@ -17,7 +17,7 @@ namespace WebHospital.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            return View(db.patient.ToList());
+            return View();
         }
 
         // GET: Login/Details/5
@@ -124,10 +124,10 @@ namespace WebHospital.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult userRegister([Bind(Include = "patientID,IDNumber,name,gender,age,contactInformation,birthday")] patient patient, 
+        public ActionResult userRegister([Bind(Include = "patientID,IDNumber,name,gender,age,contactInformation,birthday")] patient patient,
                                             string password, string confirmPassword) // for patients
         {
-            if(password != confirmPassword)
+            if (password != confirmPassword)
             {
                 return View("PleaseCheckYourPassword");
             }
@@ -159,24 +159,24 @@ namespace WebHospital.Controllers
                     {
                         List<patient> list = db.patient.Where(b => b.IDNumber.Equals(loginName)).ToList(); // ID number is not the primary key of patient, so queries are needed
                         Session["Current"] = User; // Save current user info to Session
-                        return View("Index", "patients", list[0]);
+                        return RedirectToAction("Index", "patients", list[0]);
                     }
                 case (1):
                     {
                         Session["Current"] = User;
-                        return View("Index", "superadmin");
+                        return RedirectToAction("Index", "superadmin");
                     }
                 case (2): // doctor
                     {
                         Session["Current"] = User;
                         medicalPersonnel doctor = db.medicalPersonnel.Find(Convert.ToInt32(loginName));
-                        return View("Index", "doctor", doctor);
+                        return RedirectToAction("Index", "doctor", doctor);
                     }
                 case (3): // medicine management personnel
                     {
                         Session["Current"] = User;
                         medicalPersonnel medicineManager = db.medicalPersonnel.Find(Convert.ToInt32(loginName));
-                        return View("Index", "medicine", medicineManager);
+                        return RedirectToAction("Index", "medicine", medicineManager);
                     }
                 // To add...
             };

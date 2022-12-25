@@ -151,11 +151,18 @@ namespace WebHospital.Controllers
             return View(db.scheduling.ToList());
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult search(string department, DateTime time, string timeDetail) // return available appointment positions
         {
             List<medicalPersonnel> people = db.medicalPersonnel.Where(p => p.department == department).ToList();
-            List<scheduling> availablePeople = db.scheduling.Where(p => p.dutyTime == time && p.timeDetail == timeDetail).ToList();
-
+            List<scheduling> availablePeople = new List<scheduling>();
+            foreach (var person in people)
+            {
+                scheduling s = db.scheduling.Find(person.medicalPersonnelID);
+                if (s.dutyTime == time && s.timeDetail == timeDetail) availablePeople.Add(s);
+            }
             return View(availablePeople); // return a list of available # aligned with different departments
         }
 
@@ -213,6 +220,8 @@ namespace WebHospital.Controllers
         public ActionResult pay(order o) // difficult to implement without using API - not implemented yet
         {
             o.orderStatus = "paid";
+            db.SaveChanges();
+
             return View(o);
         }
 

@@ -1,7 +1,27 @@
-﻿
+﻿@model ClassLibrary.user
+
 @{
     ViewBag.Title = "userLogin";
 }
 
-<h2>userLogin</h2>
+<h2>登录</h2>
 
+<form action="/Login/userLogin" method="post">
+    <div class="form-input">
+        <label for="username">用户名</label>
+        <input type="text" name="username" />
+    </div>
+    <div class="form-input">
+        <label for="password">密码</label>
+        <input type="password" name="password" />
+    </div>
+    <div class="form-input">
+        <button>登录</button>
+    </div>
+</form>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
