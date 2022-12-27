@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ClassLibrary.order>
+
+@{
+    ViewBag.Title = "订单核销";
+}
+
+<h2>查询待核销订单</h2>
+
+
+@using (Html.BeginForm("Check", "medicine", FormMethod.Post))
+
+{
+
+    <p>
+
+        患者编号:1234（测试用）@Html.TextBox("search")
+
+        &nbsp;&nbsp;
+
+        <input type="submit" value="搜索" />
+
+    </p>
+
+}
+
+<table class="table">
+    <tr>
+        <th>
+            订单明细
+        </th>
+        <th>
+            订单类型
+        </th>
+        <th>
+            订单状态
+        </th>
+        <th>
+            患者编号
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderDetail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.patientId)
+            </td>
+            <td>
+                @Html.ActionLink("核销", "CheckOrder", new { id = item.orderNumber })
+            </td>
+        </tr>
+    }
+
+    <tr>
+        </tr>
+</table>
+
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("药品管理", "Index", "medicine")</li>
+                    <li>@Html.ActionLink("订单核销", "Check", "medicine")</li>
+                </ul>
+            </div>
+        </div>
+    </div>

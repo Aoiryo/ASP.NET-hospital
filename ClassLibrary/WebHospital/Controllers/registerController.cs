@@ -153,7 +153,6 @@ namespace WebHospital.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public ActionResult search(string department, DateTime time, string timeDetail) // return available appointment positions
         {
             List<medicalPersonnel> people = db.medicalPersonnel.Where(p => p.department == department).ToList();

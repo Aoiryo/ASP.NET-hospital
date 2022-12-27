@@ -6,7 +6,7 @@ namespace ClassLibrary
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("user")]
+    [Table("User")]
     public partial class user
     {
         [Key]

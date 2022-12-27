@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<ClassLibrary.patient>
+@using ClassLibrary
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>欢迎来到智慧医疗系统！</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -53,9 +51,9 @@
             @Html.DisplayFor(modelItem => item.birthday)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.patientID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.patientID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.patientID })
+            @Html.ActionLink("修改", "Edit", new { id=item.patientID }) |
+            @Html.ActionLink("详细", "Details", new { id=item.patientID }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.patientID })
         </td>
     </tr>
 }

@@ -1,8 +1,6 @@
 ﻿@model ClassLibrary.user
 
-@{
-    ViewBag.Title = "Index";
-}
+@{ ViewBag.Title = "Index"; }
 
 <h2>登录</h2>
 
@@ -19,6 +17,8 @@
         <input type="submit">
     </div>
 </form>
+
+@Html.ActionLink("注册", "userRegisterForm", "Login")
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

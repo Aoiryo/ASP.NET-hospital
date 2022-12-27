@@ -188,7 +188,6 @@
     <Content Include="Views\Login\Details.cshtml" />
     <Content Include="Views\Login\Edit.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Login\userLogin.cshtml" />
     <Content Include="Views\Login\adminLogin.cshtml" />
     <Content Include="Views\Login\resetPassword.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
@@ -224,6 +223,13 @@
     <Content Include="Views\superadmin\Edit.cshtml" />
     <Content Include="Views\superadmin\Index.cshtml" />
     <Content Include="Views\register\Index.cshtml" />
+    <Content Include="Views\Login\userRegisterForm.cshtml" />
+    <Content Include="Views\medicine\Check.cshtml" />
+    <Content Include="Views\medicine\Create.cshtml" />
+    <Content Include="Views\medicine\Delete.cshtml" />
+    <Content Include="Views\medicine\Details.cshtml" />
+    <Content Include="Views\medicine\Edit.cshtml" />
+    <Content Include="Views\medicine\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

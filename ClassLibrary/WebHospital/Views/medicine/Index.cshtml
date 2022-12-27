@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ClassLibrary.medicine>
+
+@{
+    ViewBag.Title = "药品管理";
+}
+<h2>药品管理</h2>
+
+<p>
+    @Html.ActionLink("新的药品", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            药品名
+        </th>
+        <th>
+            价格
+        </th>
+        <th>
+            剩余数量
+        </th>
+        <th>
+            存储位置
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.medicine1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.medicineRemainingQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.location)
+            </td>
+            <td>
+                @Html.ActionLink("编辑", "Edit", new { id = item.medicine1 }) |
+                @Html.ActionLink("详情", "Details", new { id = item.medicine1 }) |
+                @Html.ActionLink("删除", "Delete", new { id = item.medicine1 }) |
+                @Html.ActionLink("更新剩余数量", "Update", new { id = item.medicine1 })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("药品管理", "Index", "medicine")</li>
+                <li>@Html.ActionLink("订单核销", "Check", "medicine")</li>
+            </ul>
+        </div>
+    </div>
+</div>

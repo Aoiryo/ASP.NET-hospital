@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "userRegisterForm";
+}
+
+<h2>注册</h2>
+
+<form action="/Login/userRegister" method="post">
+    <div class="form-input">
+        <label for="loginName">身份证号</label>
+        <input type="text" name="loginName" />
+    </div>
+    <div class="form-input">
+        <label for="name">姓名</label>
+        <input type="text" name="name" />
+    </div>
+    <div class="form-input">
+        <label for="gender">性别</label>
+        <input type="text" name="gender" />
+    </div>
+    <div class="form-input">
+        <label for="age">年龄</label>
+        <input type="text" name="age" />
+    </div>
+    <div class="form-input">
+        <label for="contactInfo">联系方式</label>
+        <input type="text" name="contactInfo" />
+    </div>
+    <div class="form-input">
+        <label for="birthday">生日</label>
+        <input type="date" name="birthday" />
+    </div>
+    <div class="form-input">
+        <label for="password">密码</label>
+        <input type="password" name="password" />
+    </div>
+    <div class="form-input">
+        <label for="confirmPassword">确认密码</label>
+        <input type="password" name="confirmPassword" />
+    </div>
+
+    <div class="form-input">
+        <input type="submit">
+    </div>
+</form>
+
+
+<h2>身份证号会成为您的登录用户名</h2>
+

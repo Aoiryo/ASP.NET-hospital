@@ -4,13 +4,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>系统管理员主页</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("创建新员工/用户", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDNumber)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.password)
         </th>
@@ -23,15 +26,18 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.IDNumber)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.password)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.roleID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDNumber }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDNumber }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDNumber })
+            @Html.ActionLink("修改", "Edit", new { id=item.IDNumber }) |
+            @Html.ActionLink("详细", "Details", new { id=item.IDNumber }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.IDNumber })
         </td>
     </tr>
 }

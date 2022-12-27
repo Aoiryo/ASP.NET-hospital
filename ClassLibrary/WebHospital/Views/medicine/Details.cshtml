@@ -1,0 +1,50 @@
+﻿@model ClassLibrary.medicine
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>详情</h2>
+
+<div>
+    <h4>药品</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            药品名
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.medicine1)
+        </dd>
+
+        <dt>
+            价格
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            剩余数量
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.medicineRemainingQuantity)
+        </dd>
+
+        <dt>
+            存储位置
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.location)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("编辑", "Edit", new { id = Model.medicine1 }) |
+    @Html.ActionLink("返回", "Index")
+</p>

@@ -15,14 +15,21 @@ namespace WebHospital
 
         protected void Application_Start()
         {
-            int? maxRegistration = (from t in db.registrationSession
+            long? maxRegistration = (from t in db.registrationSession
                         select (int?)t.registrationSessionID).Max();
             maxRegistration = (maxRegistration != null) ? maxRegistration : -1;
             Application["registration"] = maxRegistration + 1;
-            int? maxOrder = (from t in db.order
+
+            long? maxOrder = (from t in db.order
                                     select (int?)t.orderNumber).Max();
             maxOrder = (maxOrder != null) ? maxOrder : -1;
             Application["order"] = maxOrder + 1;
+
+            long? maxPatient = (from t in db.patient
+                               select (int?)t.patientID).Max();
+            maxPatient = (maxPatient != null) ? maxPatient : -1;
+            Application["patientID"] = maxPatient + 1;
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

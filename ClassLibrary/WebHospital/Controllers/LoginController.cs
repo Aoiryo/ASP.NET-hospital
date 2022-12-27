@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ClassLibrary;
+using System.Data.Entity.Validation;
 
 namespace WebHospital.Controllers
 {
@@ -124,29 +125,41 @@ namespace WebHospital.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult userRegister([Bind(Include = "patientID,IDNumber,name,gender,age,contactInformation,birthday")] patient patient,
+        public ActionResult userRegisterForm()
+        {
+            return View();
+        }
+
+        public ActionResult userRegister(string loginName, string name, string gender, int age, string contactInfo, DateTime birthday,
                                             string password, string confirmPassword) // for patients
         {
             if (password != confirmPassword)
             {
                 return View("PleaseCheckYourPassword");
             }
-            if (ModelState.IsValid)
+            patient patient = new patient()
             {
-                db.patient.Add(patient);
-                user newUser = new user()
-                {
-                    IDNumber = patient.IDNumber,
-                    password = confirmPassword,
-                    roleID = 0
-                };
-                db.user.Add(newUser);
-                db.SaveChanges();
-                Session["Current"] = newUser;
-                return View("Index", "patients", patient); // log in automatically
-            }
+                patientID = (long)HttpContext.Application["patientID"],
+                IDNumber = loginName,
+                gender = gender,
+                age = age,
+                contactInformation = contactInfo,
+                birthday = birthday
+            };
+            db.patient.Add(patient);
+            user newUser = new user()
+            {
+                IDNumber = loginName,
+                password = confirmPassword,
+                roleID = 0
+            };
+            db.user.Add(newUser);
+            db.SaveChanges();
+            Session["Current"] = newUser;
 
-            return View(patient);
+            HttpContext.Application["patientID"] = (long)HttpContext.Application["patientID"] + 1;
+
+            return RedirectToAction("Index", "patients", patient); // log in automatically
         }
 
         public ActionResult userLogin(string loginName, string password)
@@ -168,9 +181,10 @@ namespace WebHospital.Controllers
                     }
                 case (2): // doctor
                     {
+                        long workingNum = Convert.ToInt32(loginName);
+                        List<medicalPersonnel> list = db.medicalPersonnel.Where(b => b.medicalPersonnelID.Equals(workingNum)).ToList();
                         Session["Current"] = User;
-                        medicalPersonnel doctor = db.medicalPersonnel.Find(Convert.ToInt32(loginName));
-                        return RedirectToAction("Index", "doctor", doctor);
+                        return RedirectToAction("Index", "doctor", list[0]);
                     }
                 case (3): // medicine management personnel
                     {

@@ -33,7 +33,7 @@ namespace ClassLibrary
 
         public bool isDimission { get; set; }
 
-        public bool gender { get; set; }
+        public string gender { get; set; }
 
         public int? age { get; set; }
 
